@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: transaction-logger
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/myapp
+    username: myapp
+    password: myapp
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+#      ddl-auto: create
+    show-sql: true
+#  http://<server-ip>:8080/h2-console
+
+#logging:
+#  level:
+#    org: DEBUG
