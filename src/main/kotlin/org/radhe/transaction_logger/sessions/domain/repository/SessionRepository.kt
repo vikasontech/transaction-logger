@@ -6,11 +6,13 @@ import org.radhe.transaction_logger.sessions.domain.vo.SessionId
 import org.radhe.transaction_logger.sessions.infrastructure.persistence.SessionEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
+import java.time.Month
 
 interface SessionRepository: JpaRepository<SessionEntity, Long> {
-    @Query(value="select * from session where account_id = :accountId and expired_time is null",
+    @Query(value="select * from session where account_id = :accountId " +
+            "and session_month = :month and session_year = :year and expired_time is null",
         nativeQuery = true)
-    fun findByAccountIdAndExpiryTime(accountId: String): List<SessionEntity>
+    fun findByAccountIdAndExpiryTime(accountId: String, year: Int, month: Int): List<SessionEntity>
 
     @Query(value="select * from session where id = :sessionId and expired_time is null",
         nativeQuery = true)

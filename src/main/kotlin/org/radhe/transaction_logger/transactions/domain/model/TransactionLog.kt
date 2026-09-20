@@ -86,5 +86,5 @@ data class Day(val value: Int) {
 }
 
 enum class TransactionType {
-    INCOME, EXPENSE, INTERNAL_TRANSFER
+    income, expense, transfer
 }

@@ -37,7 +37,8 @@ class SessionPoliciesImpl(
         val sessionPeriod = session.sessionPeriod
         val accountId = session.accountId
         log.info("Session creation policy on $sessionPeriod, $accountId")
-        if (sessionRepository.findByAccountIdAndExpiryTime(accountId.value).isNotEmpty()) {
+        if (sessionRepository.findByAccountIdAndExpiryTime(accountId.value,
+            sessionPeriod.year, sessionPeriod.month).isNotEmpty()) {
             throw AlreadyActiveSessionPresent()
         }
     }
